@@ -41,7 +41,13 @@
 	-------------------------------------------------------------------------*/
 		
 		public function checkFields(&$errors, $checkForDuplicates = true) {
-			if (!filter_var($this->get('image_url'), FILTER_VALIDATE_URL)) {
+			$image_url = $this->get('image_url');
+			
+			if ($image_url[0] == '/') {
+				$image_url = URL . $image_url;
+			}
+			
+			if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
 				$errors['image_url'] = 'Please enter a valid URL.';
 			}
 
@@ -119,6 +125,11 @@
 					? $data['position_y']
 					: null
 			);
+			$image_url = $this->get('image_url');
+			
+			if ($image_url[0] == '/') {
+				$image_url = URL . $image_url;
+			}
 			
 			$label = Widget::Label($this->get('label'));
 			$wrapper->appendChild($label);
@@ -136,7 +147,7 @@
 			));
 			
 			$image = new XMLElement('img');
-			$image->setAttribute('src', $this->get('image_url'));
+			$image->setAttribute('src', $image_url);
 			$map->appendChild($image);
 			$wrapper->appendChild($map);
 		}
