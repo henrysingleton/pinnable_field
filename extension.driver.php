@@ -16,8 +16,8 @@
 		public function about() {
 			return array(
 				'name'			=> 'Field: Pinnable',
-				'version'		=> '0.1',
-				'release-date'	=> '2011-05-31',
+				'version'		=> '0.2',
+				'release-date'	=> '2013-03-31',
 				'author'		=> array(
 					'name'			=> 'Rowan Lewis',
 					'website'		=> 'http://rowanlewis.com/',
@@ -31,14 +31,14 @@
 		 * Cleanup installation.
 		 */
 		public function uninstall() {
-			$this->_Parent->Database->query("DROP TABLE `tbl_fields_pinnable`");
+			Symphony::Database()->query("DROP TABLE `tbl_fields_pinnable`");
 		}
 		
 		/**
 		 * Create tables and configuration.
 		 */
 		public function install() {
-			$this->_Parent->Database->query("
+			Symphony::Database()->query("
 				CREATE TABLE IF NOT EXISTS `tbl_fields_pinnable` (
 					`id` int(11) unsigned NOT NULL auto_increment,
 					`field_id` int(11) unsigned NOT NULL,

@@ -14,10 +14,9 @@
 		Definition:
 	-------------------------------------------------------------------------*/
 		
-		public function __construct(&$parent) {
-			parent::__construct($parent);
-			
-			$this->_name = 'Pinnable';
+		function __construct(){
+			parent::__construct();
+			$this->_name = __('Pinnable');
 			$this->_required = true;
 		}
 		

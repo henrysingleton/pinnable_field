@@ -34,11 +34,13 @@
 		})
 		
 		.live('click', function(event) {
-			var $map = $(this);
+			var $map = $(this),
+				positionX = event.pageX - $map.offset().left,
+				positionY = event.pageY - $map.offset().top
 			
 			$map.attr({
-					'data-position-x':	event.layerX / $map.width() * 100,
-					'data-position-y':	event.layerY / $map.height() * 100
+					'data-position-x':	positionX / $map.width() * 100,
+					'data-position-y':	positionY / $map.height() * 100
 				})
 				.trigger('change');
 		});
